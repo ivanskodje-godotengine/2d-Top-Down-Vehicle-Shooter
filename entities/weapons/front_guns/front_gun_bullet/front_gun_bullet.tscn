@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/weapons/generic_bullet.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/front_guns/front_gun_bullet/assets/front_guns_bullet1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.12917, 11.809 )
+
+[node name="front_gun_bullet" type="Area2D"]
+
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+damage = 1
+speed = 50
+visibility_notifier_path = NodePath("visibility_notifier_2d")
+
+[node name="trigger" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="visibility_notifier_2d" type="VisibilityNotifier2D" parent="."]
+
+rect = Rect2( -70, -70, 140, 140 )
+
+

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/weapons/roof_turret/roof_turret.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/roof_turret/roof_turret_bullet/roof_turret_bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/weapons/roof_turret/assets/roof_turret.png" type="Texture" id=3]
+
+[node name="roof_turret" type="Node2D"]
+
+script/script = ExtResource( 1 )
+bullet_scene = ExtResource( 2 )
+max_bullets = 10
+id = 0
+unlimited_ammo = true
+max_ammo = 30
+bullet_delay = 0.4
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+offset = Vector2( 0, -50 )
+
+[node name="bullet_spawn1" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1.52649, -136.604 )
+
+

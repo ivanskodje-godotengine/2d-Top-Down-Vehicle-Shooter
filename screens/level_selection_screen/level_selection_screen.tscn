@@ -1,0 +1,296 @@
+[gd_scene load_steps=18 format=1]
+
+[ext_resource path="res://assets/fonts/morris_roman/MorrisRomanBlackAlt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://screens/level_selection_screen/scripts/levels.gd" type="Script" id=2]
+[ext_resource path="res://screens/level_selection_screen/assets/level_normal.png" type="Texture" id=3]
+[ext_resource path="res://screens/level_selection_screen/assets/level_focused.png" type="Texture" id=4]
+[ext_resource path="res://screens/level_selection_screen/level_icon/level_icon.gd" type="Script" id=5]
+[ext_resource path="res://levels/001/level.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fonts/morris_roman/MorrisRomanBlack.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://screens/selection_screen/assets/fonts/name_dynamicfont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://screens/level_selection_screen/scripts/button_back.gd" type="Script" id=9]
+[ext_resource path="res://screens/level_selection_screen/scripts/character.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 90
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 56
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="level_selection_screen" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="level_selection_title" type="Label" parent="canvas_layer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 75.0
+margin/right = 1922.0
+margin/bottom = 153.0
+custom_fonts/font = SubResource( 1 )
+text = "LEVEL SELECT"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="levels" type="Node2D" parent="canvas_layer"]
+
+script/script = ExtResource( 2 )
+
+[node name="level_1" type="TextureButton" parent="canvas_layer/levels"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 378.0
+margin/top = 306.0
+margin/right = 506.0
+margin/bottom = 434.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/focused = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
+script/script = ExtResource( 5 )
+level = ExtResource( 6 )
+
+[node name="label" type="Label" parent="canvas_layer/levels/level_1"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 34.0
+margin/top = 43.0
+margin/right = 90.0
+margin/bottom = 92.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_2" type="TextureButton" parent="canvas_layer/levels"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 582.0
+margin/top = 546.0
+margin/right = 710.0
+margin/bottom = 674.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/focused = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
+script/script = ExtResource( 5 )
+level = ExtResource( 6 )
+
+[node name="label" type="Label" parent="canvas_layer/levels/level_2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 34.0
+margin/top = 43.0
+margin/right = 90.0
+margin/bottom = 92.0
+custom_fonts/font = SubResource( 2 )
+text = "2"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_3" type="TextureButton" parent="canvas_layer/levels"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 863.0
+margin/top = 390.0
+margin/right = 991.0
+margin/bottom = 518.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/focused = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
+script/script = ExtResource( 5 )
+level = ExtResource( 6 )
+
+[node name="label" type="Label" parent="canvas_layer/levels/level_3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 34.0
+margin/top = 43.0
+margin/right = 90.0
+margin/bottom = 92.0
+custom_fonts/font = SubResource( 2 )
+text = "3"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="button_back" type="Button" parent="canvas_layer/levels"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 760.0
+margin/top = 906.0
+margin/right = 1159.0
+margin/bottom = 1009.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 0.822998, 0.546875, 1 )
+custom_colors/font_color_hover = Color( 1, 0.498039, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.903534, 0.574219, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
+script/script = ExtResource( 9 )
+prev_scene_path = "res://screens/selection_screen/selection_screen.tscn"
+
+[node name="label" type="Label" parent="canvas_layer/levels/button_back"]
+
+visibility/behind_parent = true
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 104.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 100
+text = "Back"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="player" type="Node2D" parent="canvas_layer"]
+
+transform/pos = Vector2( 394.277, 324.273 )
+script/script = ExtResource( 10 )
+
+[node name="sprite" type="Sprite" parent="canvas_layer/player"]
+
+visibility/opacity = 0.7
+transform/scale = Vector2( 0.3, 0.3 )
+centered = false
+
+[node name="level_selection_tween" type="Tween" parent="canvas_layer"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="pressed" from="canvas_layer/levels/button_back" to="canvas_layer/levels/button_back" method="_on_button_back_pressed"]
+
+

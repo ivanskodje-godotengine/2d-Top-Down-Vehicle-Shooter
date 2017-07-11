@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/weapons/generic_bullet.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/missile_launcher/missile/assets/missile.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.3979, 39.8233 )
+
+[node name="missile" type="Area2D"]
+
+z/z = 2
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+damage = 30
+speed = 30
+visibility_notifier_path = NodePath("visibility_notifier_2d")
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="trigger" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[node name="visibility_notifier_2d" type="VisibilityNotifier2D" parent="."]
+
+transform/pos = Vector2( 239.212, 246.308 )
+rect = Rect2( -500, -500, 500, 500 )
+
+

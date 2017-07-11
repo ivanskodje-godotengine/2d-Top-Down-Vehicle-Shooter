@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/weapons/missile_launcher/missile_launcher.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/missile_launcher/missile/missile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/weapons/missile_launcher/assets/missile_launcher.png" type="Texture" id=3]
+
+[node name="missile_launcher" type="Node2D"]
+
+script/script = ExtResource( 1 )
+bullet_scene = ExtResource( 2 )
+max_bullets = 8
+id = 1
+unlimited_ammo = true
+max_ammo = 30
+bullet_delay = 1.0
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="bullet_spawn1" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0.187531, -54.1762 )
+
+

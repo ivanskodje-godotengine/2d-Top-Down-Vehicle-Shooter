@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/weapons/front_guns/front_guns.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/front_guns/front_gun_bullet/front_gun_bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/weapons/front_guns/assets/front_guns.png" type="Texture" id=3]
+
+[node name="front_guns" type="Node2D"]
+
+script/script = ExtResource( 1 )
+bullet_scene = ExtResource( 2 )
+max_bullets = 30
+bullet_delay = 0.1
+
+[node name="bullet_spawn1" type="Position2D" parent="."]
+
+transform/pos = Vector2( -39.6305, -16.5459 )
+
+[node name="bullet_spawn2" type="Position2D" parent="."]
+
+transform/pos = Vector2( 40.7583, -17.7336 )
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+

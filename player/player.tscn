@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://entities/weapons/front_guns/front_guns.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 92.5177, -135.445, 94.3139, -94.1317, 93.7151, -69.5835, -89.4983, -74.9722, -91.8932, -98.9216, -91.2945, -142.629, -84.1096, -176.159, -55.3703, -182.745, 0.312225, -184.541, 60.7846, -183.344, 84.7341, -174.961 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -21.2423, 172.306, -67.345, 169.312, -94.2882, 161.529, -101.473, 144.165, -100.874, 116.025, -94.2882, 51.3613, 52.4023, 170.51 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 101.499, 111.235, 102.097, 147.159, 96.7089, 159.733, 82.9379, 165.72, 52.4023, 170.51, -94.2882, 51.3613, -94.2882, 2.26489, 97.3076, 57.9474 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 96.1101, 17.2333, 97.3076, 57.9474, -94.2882, 2.26489 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 93.7151, -69.5835, 96.1101, 17.2333, -94.2882, 2.26489, -89.4983, -74.9722 )
+
+[sub_resource type="CircleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 1303.33
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+
+process/pause_mode = 2
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+front_guns_scene = ExtResource( 2 )
+
+[node name="front_guns_pos" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -185.504 )
+
+[node name="vehicle_body" type="Sprite" parent="."]
+
+[node name="roof_turret_pos" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, 34.496 )
+
+[node name="missile_launcher_pos" type="Position2D" parent="."]
+
+transform/pos = Vector2( 62.0068, -135.414 )
+
+[node name="mine_dispenser_pos" type="Position2D" parent="."]
+
+transform/pos = Vector2( -12.9687, 171.835 )
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( 0.312225, -184.541, 60.7846, -183.344, 84.7341, -174.961, 92.5177, -135.445, 94.3139, -94.1317, 93.7151, -69.5835, 96.1101, 17.2333, 97.3076, 57.9474, 101.499, 111.235, 102.097, 147.159, 96.7089, 159.733, 82.9379, 165.72, 52.4023, 170.51, -21.2423, 172.306, -67.345, 169.312, -94.2882, 161.529, -101.473, 144.165, -100.874, 116.025, -94.2882, 51.3613, -94.2882, 2.26489, -89.4983, -74.9722, -91.8932, -98.9216, -91.2945, -142.629, -84.1096, -176.159, -55.3703, -182.745 )
+shape_range = Vector2( 0, 4 )
+trigger = false
+
+[node name="camera" type="Camera2D" parent="."]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 2, 2 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="range_medium" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 123.269, 59.738 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="trigger" type="CollisionShape2D" parent="range_medium"]
+
+transform/pos = Vector2( 123.269, 59.738 )
+shape = SubResource( 6 )
+trigger = true
+_update_shape_index = 0
+
+[connection signal="body_enter" from="range_medium" to="." method="_on_range_medium_body_enter"]
+
+[connection signal="body_exit" from="range_medium" to="." method="_on_range_medium_body_exit"]
+
+

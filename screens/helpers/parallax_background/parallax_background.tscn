@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://screens/helpers/parallax_background/parallax_background.gd" type="Script" id=1]
+[ext_resource path="res://screens/helpers/parallax_background/assets/background.png" type="Texture" id=2]
+[ext_resource path="res://screens/helpers/parallax_background/assets/foreground_1.png" type="Texture" id=3]
+[ext_resource path="res://screens/helpers/parallax_background/assets/road.png" type="Texture" id=4]
+[ext_resource path="res://screens/helpers/parallax_background/assets/foreground_2.png" type="Texture" id=5]
+
+[node name="parallax_background" type="Node2D"]
+
+script/script = ExtResource( 1 )
+camera_speed = 5
+background_speed = 1.0
+foreground_1_speed = 0.3
+road_speed = 1.0
+foreground_2_speed = 1.5
+camera_path = NodePath("camera_2d")
+background_path = NodePath("parallax_background/background")
+foreground_1_path = NodePath("parallax_background/foreground_1")
+road_path = NodePath("parallax_background/road")
+foreground_2_path = NodePath("parallax_background/foreground_2")
+
+[node name="camera_2d" type="Camera2D" parent="."]
+
+anchor_mode = 0
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="parallax_background" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="background" type="ParallaxLayer" parent="parallax_background"]
+
+transform/pos = Vector2( 0, -1 )
+motion/scale = Vector2( 0.3, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 2775, 0 )
+
+[node name="sprite" type="Sprite" parent="parallax_background/background"]
+
+transform/pos = Vector2( 0, 1 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 2775, 1080 )
+
+[node name="foreground_1" type="ParallaxLayer" parent="parallax_background"]
+
+transform/pos = Vector2( 0, -1 )
+motion/scale = Vector2( 0.3, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 2775, 0 )
+
+[node name="sprite" type="Sprite" parent="parallax_background/foreground_1"]
+
+transform/pos = Vector2( 0, 1 )
+texture = ExtResource( 3 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 2775, 1080 )
+
+[node name="road" type="ParallaxLayer" parent="parallax_background"]
+
+transform/pos = Vector2( 0, -1 )
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 2775, 0 )
+
+[node name="sprite" type="Sprite" parent="parallax_background/road"]
+
+transform/pos = Vector2( 0, 1 )
+texture = ExtResource( 4 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 2775, 1080 )
+
+[node name="foreground_2" type="ParallaxLayer" parent="parallax_background"]
+
+z/z = 1
+motion/scale = Vector2( 1.5, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 2775, 0 )
+
+[node name="sprite" type="Sprite" parent="parallax_background/foreground_2"]
+
+transform/pos = Vector2( 0, 267.793 )
+z/z = 2
+z/relative = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 2775, 1080 )
+
+

@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://entities/pickups/weapon_pickup.gd" type="Script" id=1]
+[ext_resource path="res://entities/pickups/assets/shadow.png" type="Texture" id=2]
+[ext_resource path="res://entities/pickups/assets/wooden_crate.png" type="Texture" id=3]
+[ext_resource path="res://entities/pickups/weapons/roof_turret/assets/roof_turret_sticker.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "hover"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("shadow:transform/scale")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.8, 1.6, 2.4, 3.3, 4.1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.23934, 1.23934 ), Vector2( 1.6, 1.6 ), Vector2( 1.23934, 1.23934 ), Vector2( 1.6, 1.6 ), Vector2( 1.23934, 1.23934 ), Vector2( 1.6, 1.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shadow:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.8, 1.6, 2.4, 3.3, 4.1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.3, 1.0, 0.3, 1.0, 0.3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("wooden_crate:transform/rot")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 359.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("wooden_crate:transform/scale")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.8, 1.6, 2.4, 3.3, 4.1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 53.2237, 53.7378 )
+
+[node name="weapon_pickup" type="Node2D"]
+
+transform/pos = Vector2( 338.54, 268.105 )
+z/z = 1
+script/script = ExtResource( 1 )
+weapon = 0
+
+[node name="shadow" type="Sprite" parent="."]
+
+visibility/opacity = 0.630234
+transform/scale = Vector2( 1.42985, 1.42985 )
+texture = ExtResource( 2 )
+
+[node name="wooden_crate" type="Sprite" parent="."]
+
+transform/rot = 202.805
+transform/scale = Vector2( 1.05282, 1.05282 )
+texture = ExtResource( 3 )
+
+[node name="weapon_sticker" type="Sprite" parent="wooden_crate"]
+
+texture = ExtResource( 4 )
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/hover = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "hover"
+
+[node name="area_2d" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="trigger" type="CollisionShape2D" parent="area_2d"]
+
+shape = SubResource( 2 )
+trigger = true
+_update_shape_index = 0
+
+[node name="respawn_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[node name="expire_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = true
+autostart = false
+
+[connection signal="body_enter" from="area_2d" to="." method="_on_area_2d_body_enter"]
+
+[connection signal="timeout" from="respawn_timer" to="." method="_on_respawn_timer_timeout"]
+
+[connection signal="timeout" from="expire_timer" to="." method="_on_expire_timer_timeout"]
+
+
